@@ -26,12 +26,6 @@ export class CustomNotionLoader
           .map((c) => c.plain_text)
           .join(" ");
 
-        // content &&
-        //   content.map((c) => {
-        //     const cleanedContent = c.plain_text.replace(/\s+/g, " ").trim();
-        //     finalContent += " " + cleanedContent;
-        //   });
-
         const cleanedContent = content.replace(/\s+/g, " ").trim();
         const contentLength = cleanedContent?.match(/\b\w+\b/g)?.length ?? 0;
 

@@ -13,7 +13,6 @@ import Answer from "@/components/Answer";
 type MainProps = {};
 
 const Main = ({}: MainProps) => {
-  const [message, setMessage] = useState<string>("");
   const [query, setQuery] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [messageState, setMessageState] = useState<{
@@ -127,7 +126,7 @@ const Main = ({}: MainProps) => {
 
   return (
     <>
-      <Chat title="ThienGPT">
+      <Chat ref={messageListRef} title="ThienGPT">
         {chatMessages.map((message, index) => {
           if (message.type === "apiMessage") {
             return <Answer key={index}>{message.message}</Answer>;
