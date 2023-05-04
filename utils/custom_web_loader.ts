@@ -1,8 +1,8 @@
-import type { CheerioAPI, load as LoadT } from 'cheerio';
-import { Document } from 'langchain/document';
-import { BaseDocumentLoader } from 'langchain/document_loaders';
-import type { DocumentLoader } from 'langchain/document_loaders';
-import { CheerioWebBaseLoader } from 'langchain/document_loaders';
+import type { CheerioAPI, load as LoadT } from "cheerio";
+import { Document } from "langchain/document";
+import { BaseDocumentLoader } from "langchain/document_loaders";
+import type { DocumentLoader } from "langchain/document_loaders";
+import { CheerioWebBaseLoader } from "langchain/document_loaders";
 
 export class CustomWebLoader
   extends BaseDocumentLoader
@@ -25,17 +25,17 @@ export class CustomWebLoader
 
   async load(): Promise<Document[]> {
     const $ = await this.scrape();
-    const title = $('h1.entry-title').text();
-    const date = $('meta[property="article:published_time"]').attr('content');
+    const title = $("h1.entry-title").text();
+    const date = $('meta[property="article:published_time"]').attr("content");
 
-    const content = $('.entry-content')
+    const content = $(".entry-content")
       .clone()
-      .find('div.elementor, style')
+      .find("div.elementor, style")
       .remove()
       .end()
       .text();
 
-    const cleanedContent = content.replace(/\s+/g, ' ').trim();
+    const cleanedContent = content.replace(/\s+/g, " ").trim();
 
     const contentLength = cleanedContent?.match(/\b\w+\b/g)?.length ?? 0;
 
@@ -48,12 +48,12 @@ export class CustomWebLoader
     load: typeof LoadT;
   }> {
     try {
-      const { load } = await import('cheerio');
+      const { load } = await import("cheerio");
       return { load };
     } catch (e) {
       console.error(e);
       throw new Error(
-        'Please install cheerio as a dependency with, e.g. `yarn add cheerio`',
+        "Please install cheerio as a dependency with, e.g. `yarn add cheerio`"
       );
     }
   }

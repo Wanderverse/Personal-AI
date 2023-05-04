@@ -20,7 +20,7 @@ const Main = ({}: MainProps) => {
           </div>
         </div>
         <View />
-        {/* <Menu className="max-w-[30.75rem] mx-auto" items={navigation} /> */}
+        <Menu className="max-w-[30.75rem] mx-auto" items={navigation} />
       </div>
       <Message
         value={message}

@@ -93,7 +93,7 @@ const LeftSidebar = ({
         )}
       >
         <div
-          className={`absolute top-0 right-0 left-0 flex items-center h-30 pl-7 pr-6 ${
+          className={`absolute top-0 right-0 left-0 flex items-center h-30 pl-3 pr-4 ${
             value ? "justify-center md:px-4" : "justify-between"
           }`}
         >
